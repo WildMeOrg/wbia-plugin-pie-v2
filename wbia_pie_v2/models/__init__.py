@@ -3,13 +3,14 @@
 Adapted from source: https://github.com/KaiyangZhou/deep-person-reid
 """
 from __future__ import absolute_import
-from .resnet import resnet50_fc512, resnext101_32x8d
+from .resnet import resnet50_fc512, resnext101_32x8d, resnet152
 from .efficientnet import efficientnet_b4
 
 __model_factory = {
     'resnet50_fc512': resnet50_fc512,
     'resnext101_32x8d': resnext101_32x8d,
     'efficientnet_b4': efficientnet_b4,
+    'resnet152': resnet152,
 }
 
 
