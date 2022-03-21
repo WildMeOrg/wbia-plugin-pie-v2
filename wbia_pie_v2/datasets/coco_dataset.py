@@ -288,14 +288,14 @@ class COCODataset(ImageDataset):
         excluded_records = []
         for i, db_rec in enumerate(db_coco):
             # Keep only records from specific viewpoints
-            if viewpoint_list is not None and db_rec['viewpoint'] not in viewpoint_list:
-                excluded_records.append(db_rec)
-                continue
+            # if viewpoint_list is not None and db_rec['viewpoint'] not in viewpoint_list:
+            #     excluded_records.append(db_rec)
+            #     continue
 
-            # Exclude names from the name exclusion list
-            if excluded_names is not None and db_rec['name'] in excluded_names:
-                excluded_records.append(db_rec)
-                continue
+            # # Exclude names from the name exclusion list
+            # if excluded_names is not None and db_rec['name'] in excluded_names:
+            #     excluded_records.append(db_rec)
+            #     continue
 
             # Read image
             image = imageio.imread(db_rec['image_path'])

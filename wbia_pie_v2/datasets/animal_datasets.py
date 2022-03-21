@@ -18,7 +18,7 @@ class ConfigDataset(COCODataset):
             name=os.path.splitext(os.path.split(config_fpath)[1])[0],
             dataset_url=conf['data'].get('dataset_url', None),
             dataset_dir=conf['data']['coco_dir'],
-            split=conf['data'].get('split', f'{mode}2021'),
+            split=conf['data'].get('split', f'{mode}2022'),
             crop=conf['data'].get('crop', True),
             resize=conf['data'].get('resize', True),
             imsize=min(conf['data']['height'], conf['data']['width']),
