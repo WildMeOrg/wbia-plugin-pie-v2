@@ -89,6 +89,9 @@ def get_default_config():
     cfg.loss.triplet.weight_c = 0.0005
     cfg.loss.weight_lab = 1.0
     cfg.loss.weight_unl = 1.0
+    cfg.loss.circle = CN()
+    cfg.loss.circle.margin=0.25
+    cfg.loss.circle.gamma=256
 
     # test
     cfg.test = CN()

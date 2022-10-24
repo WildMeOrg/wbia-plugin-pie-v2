@@ -350,7 +350,7 @@ class ResNet(nn.Module):
 
         if 'softmax' in self.loss:
             return y
-        elif 'triplet' in self.loss:
+        elif 'triplet' or 'circle' in self.loss:
             return y, v
         else:
             raise KeyError('Unsupported loss: {}'.format(self.loss))

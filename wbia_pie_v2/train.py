@@ -26,7 +26,7 @@ from default_config import (
 )
 
 import optim
-from engine import TripletPIEEngine
+from engine import TripletPIEEngine, CirclePIEEngine
 from models import build_model
 from datasets.datamanager import AnimalImageDataManager
 
@@ -101,17 +101,32 @@ def train(args, optuna_trial=None):
         )
 
     print('Building {}-engine for {}-reid'.format(cfg.loss.name, cfg.data.type))
-    engine = TripletPIEEngine(
-        datamanager,
-        model,
-        optimizer=optimizer,
-        margin=cfg.loss.triplet.margin,
-        weight_t=cfg.loss.triplet.weight_t,
-        weight_x=cfg.loss.triplet.weight_x,
-        scheduler=scheduler,
-        use_gpu=cfg.use_gpu,
-        label_smooth=cfg.loss.softmax.label_smooth,
-    )
+    if cfg.loss.name == 'circle':
+        print('CIRCLE LOSS HERE WE GO BABY')
+        engine = CirclePIEEngine(
+            datamanager,
+            model,
+            optimizer=optimizer,
+            margin=cfg.loss.circle.margin,
+            gamma=cfg.loss.circle.gamma,
+            weight_t=cfg.loss.triplet.weight_t,
+            weight_x=cfg.loss.triplet.weight_x,
+            scheduler=scheduler,
+            use_gpu=cfg.use_gpu,
+            label_smooth=cfg.loss.softmax.label_smooth,
+        )
+    elif cfg.loss.name == 'triplet':
+        engine = TripletPIEEngine(
+            datamanager,
+            model,
+            optimizer=optimizer,
+            margin=cfg.loss.triplet.margin,
+            weight_t=cfg.loss.triplet.weight_t,
+            weight_x=cfg.loss.triplet.weight_x,
+            scheduler=scheduler,
+            use_gpu=cfg.use_gpu,
+            label_smooth=cfg.loss.softmax.label_smooth,
+        )
 
     best_rank1 = engine.run(**engine_run_kwargs(cfg), save_dir=save_dir, tb_dir=tb_dir, optuna_trial=optuna_trial)
     return best_rank1
