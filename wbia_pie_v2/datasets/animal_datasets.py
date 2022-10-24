@@ -4,10 +4,15 @@ import yaml
 import os
 
 
+from datetime import date
+
+# used on some data labels
+CURRENT_YEAR = date.today().year
+
 # This dynamically creats a COCODataset object from looking at a config file
 class ConfigDataset(COCODataset):
 
-    def __init__(self, config_fpath, **kwargs):
+    def __init__(self, config_fpath, year=CURRENT_YEAR, **kwargs):
         conf = _read_and_validate_dataset_config(config_fpath)
         # name is the config filename without extension or containing folders
         id_attr = ['name']
@@ -18,7 +23,8 @@ class ConfigDataset(COCODataset):
             name=os.path.splitext(os.path.split(config_fpath)[1])[0],
             dataset_url=conf['data'].get('dataset_url', None),
             dataset_dir=conf['data']['coco_dir'],
-            split=conf['data'].get('split', f'{mode}2021'),
+            # a year label is common on coco datasets
+            split=conf['data'].get('split', f'{mode}{year}'),
             crop=conf['data'].get('crop', True),
             resize=conf['data'].get('resize', True),
             imsize=min(conf['data']['height'], conf['data']['width']),
