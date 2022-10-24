@@ -31,20 +31,30 @@ from models import build_model
 from datasets.datamanager import AnimalImageDataManager
 
 
-def train(args):
+def train(args, optuna_trial=None):
+
+    # if passed in via argparser
+    if type(args) == argparse.Namespace:
+        args = vars(args)
 
     cfg = get_default_config()
     cfg.use_gpu = torch.cuda.is_available()
 
-    if args.cfg:
-        cfg.merge_from_file(args.cfg)
-    cfg.merge_from_list(args.opts)
+    print(f'top of train with args {args}')
+
+    if 'cfg' in args:
+        cfg.merge_from_file(args['cfg'])
+    if 'opts' in args:
+        print(f'PIE training found opt: {args["opts"]}')
+        cfg.merge_from_list(args['opts'])
+
+
     set_random_seed(cfg.train.seed)
 
     log_name = 'test.log' if cfg.test.evaluate else 'train.log'
     timestamp = time.strftime('-%Y-%m-%d-%H-%M-%S')
     log_name += timestamp
-    config_name = '_'.join([osp.splitext(osp.basename(args.cfg))[0], cfg.data.version])
+    config_name = '_'.join([osp.splitext(osp.basename(args['cfg']))[0], cfg.data.version])
     save_dir = osp.join(cfg.data.save_dir, config_name)
     tb_dir = osp.join(cfg.data.tb_dir, '_'.join([config_name, timestamp]))
     os.makedirs(save_dir, exist_ok=True)
@@ -60,7 +70,7 @@ def train(args):
 
     print('Making datamanger:')
     datamanager_args = imagedata_kwargs(cfg)
-    datamanager_args['config_fpath'] = args.cfg
+    datamanager_args['config_fpath'] = args['cfg']
     datamanager = AnimalImageDataManager(**datamanager_args)
 
     print('Building model: {}'.format(cfg.model.name))
@@ -103,7 +113,8 @@ def train(args):
         label_smooth=cfg.loss.softmax.label_smooth,
     )
 
-    engine.run(**engine_run_kwargs(cfg), save_dir=save_dir, tb_dir=tb_dir)
+    best_rank1 = engine.run(**engine_run_kwargs(cfg), save_dir=save_dir, tb_dir=tb_dir, optuna_trial=optuna_trial)
+    return best_rank1
 
 
 if __name__ == '__main__':

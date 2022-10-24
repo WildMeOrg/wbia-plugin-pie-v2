@@ -9,6 +9,8 @@ import datetime
 from collections import OrderedDict
 import torch
 from torch.utils.tensorboard import SummaryWriter
+# from ray import tune
+import optuna
 
 from utils import (
     MetricMeter,
@@ -128,6 +130,8 @@ class Engine(object):
         rerank=False,
         vis_train_data=True,
         visrank_resize=True,
+        optuna_trial=None,
+        # report_to_tune=False,
     ):
         r"""A unified pipeline for training and evaluating a model.
 
@@ -214,6 +218,12 @@ class Engine(object):
                 else:
                     is_best = False
                 self.save_model(self.epoch, rank1, save_dir, is_best=is_best)
+                if optuna_trial != None:
+                    optuna_trial.report(rank1, self.epoch)
+                    if optuna_trial.should_prune():
+                        raise optuna.exceptions.TrialPruned()
+                # if report_to_tune:
+                #     tune.report(rank1)
 
         if self.max_epoch > 0:
             print('=> Final test')
@@ -232,6 +242,9 @@ class Engine(object):
         print('Elapsed {}'.format(elapsed))
         if self.writer is not None:
             self.writer.close()
+
+        # for hyperparam optimization
+        return best_rank1
 
     def train(self, print_freq=10, fixbase_epoch=0, open_layers=None):
         losses = MetricMeter()
