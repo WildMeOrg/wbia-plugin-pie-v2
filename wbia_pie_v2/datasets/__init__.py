@@ -5,6 +5,7 @@ from .animal_datasets import GrayWhale
 from .animal_datasets import HyenaBothsides
 from .animal_datasets import WildHorseFace
 from .animal_datasets import ConfigDataset
+from .animal_datasets import Leopards
 from .animal_wbia import AnimalNameWbiaDataset  # noqa: F401
 
 
@@ -16,6 +17,7 @@ __image_datasets = {
     'hyena_bothsides': HyenaBothsides,
     'wildhorse_face': WildHorseFace,
     'config_dataset': ConfigDataset,
+    'leopards': Leopards,
 }
 
 

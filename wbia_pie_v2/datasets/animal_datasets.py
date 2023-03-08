@@ -155,4 +155,25 @@ class WildHorseFace(COCODataset):
             **kwargs
         )
 
+class Leopards(COCODataset):
+    def __init__(self, **kwargs):
+        super(Leopards, self).__init__(
+            name='leopards',
+            dataset_dir='leopards',
+            dataset_url='',
+            split='test2023',
+            crop=True,
+            resize=True,
+            imsize=256,
+            train_min_samples=5,
+            id_attr=['name', 'viewpoint'],
+            viewpoint_list=['left', 'right'],
+            debug=False,
+            **kwargs
+
+                )
+
+
+
+
 
