@@ -166,7 +166,7 @@ class Leopards(COCODataset):
             resize=True,
             imsize=256,
             train_min_samples=5,
-            id_attr=['individual_nickname', 'viewpoint'],
+            id_attr=['name', 'viewpoint'],
             viewpoint_list=['left', 'right', 'back', 'front', 'down'],
             debug=False,
             **kwargs
