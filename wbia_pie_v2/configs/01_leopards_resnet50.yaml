@@ -21,7 +21,7 @@ sampler:
 train:
   optim: 'adam'
   lr: 0.00001
-  max_epoch: 400
+  max_epoch: 200
   batch_size: 64
   fixbase_epoch: 1
   open_layers: ['fc', 'classifier']
