@@ -165,9 +165,10 @@ class Leopards(COCODataset):
             crop=True,
             resize=True,
             imsize=256,
-            train_min_samples=5,
+            train_min_samples=3,
+            test_min_samples=2,
             id_attr=['name', 'viewpoint'],
-            viewpoint_list=['left', 'right', 'back', 'front', 'down'],
+            viewpoint_list=['left', 'right'],
             debug=False,
             **kwargs
 
