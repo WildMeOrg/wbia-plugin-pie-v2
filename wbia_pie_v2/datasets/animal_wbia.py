@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from torch.utils.data import Dataset
 from skimage import transform as skimage_transform
+from skimage import color
 import imageio
 import numpy as np
 
@@ -43,8 +44,14 @@ class AnimalNameWbiaDataset(Dataset):
         image = imageio.imread(self.image_paths[idx])
         if image is None:
             raise ValueError('Fail to read {}'.format(self.image_paths[id]))
+        
+        # Ensure image is in RGB format
+        if image.ndim == 2:
+            image = color.gray2rgb(image)
+        elif image.shape[2] == 4:
+            image = color.rgba2rgb(image)
 
-        # Crop bounding box area'
+        # Crop bounding box area
         x1, y1, w, h = self.bboxes[idx]
         image = image[y1 : y1 + h, x1 : x1 + w]
         if min(image.shape) < 1:
