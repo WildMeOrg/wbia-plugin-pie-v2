@@ -82,7 +82,8 @@ CONFIGS = {
     'dolphin_bottlenose+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
     'dolphin_bottlenose': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
     'dolphin_whitesided+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
-    'white_shark+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
+    'white_shark+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml
+    'carcharodon_carcharias': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
     'whale_pilot+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
     'spinner_dolphin': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
     'stenella_longirostris': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
@@ -142,6 +143,7 @@ MODELS = {
     'dolphin_bottlenose': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
     'dolphin_whitesided+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
     'white_shark+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
+    'carcharodon_carcharias': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
     'whale_pilot+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
     'spinner_dolphin': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
     'stenella_longirostris': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
