@@ -99,6 +99,7 @@ CONFIGS = {
     'whale_humpback+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
     'lagenodelphis_hosei': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
     'whale_minke+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
+    'ziphiidae_sp': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
     'balaenoptera_acutorostrata+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.yaml',
     'whale_minke': 'https://wildbookiarepository.azureedge.net/models/pie_v2.fin_whale_body.2022.10.21.yaml'
 }
@@ -161,6 +162,7 @@ MODELS = {
     'lagenodelphis_hosei': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
     'whale_minke+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
     'balaenoptera_acutorostrata+fin_dorsal': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
+    'ziphiidae_sp': 'https://wildbookiarepository.azureedge.net/models/pie_v2.bottlenose_fin.2023.02.07.pth.tar',
     'whale_minke': 'https://wildbookiarepository.azureedge.net/models/pie_v2.fin_whale_body.2022.10.21.pth.tar'
 }
 
