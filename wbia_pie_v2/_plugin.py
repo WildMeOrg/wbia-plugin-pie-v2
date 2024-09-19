@@ -44,6 +44,7 @@ DEMOS = {
 
 CONFIGS = {
     'whalesharkcr': 'https://wildbookiarepository.azureedge.net/models/pie_v2.whale_shark.20210315.yaml',
+    'whaleshark': 'https://wildbookiarepository.azureedge.net/models/pie_v2.whale_shark.20210315.yaml',
     'rhincodon_typus': 'https://wildbookiarepository.azureedge.net/models/pie_v2.whale_shark.20210315.yaml',
     'whale_grey': 'https://wildbookiarepository.azureedge.net/models/pie_v2.whale_grey.20210513.yaml',
     'eschrichtius_robustus': 'https://wildbookiarepository.azureedge.net/models/pie_v2.whale_grey.20210513.yaml',
